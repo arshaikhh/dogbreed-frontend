@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import VotePage from "./components/Votepage";
 import LeaderboardPage from "./components/LeaderboardPage";
 import Header from "./components/Header";
