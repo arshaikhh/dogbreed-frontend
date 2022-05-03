@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import VotePage from "./components/Votepage";
 import LeaderboardPage from "./components/LeaderboardPage";
 import Header from "./components/Header";
-import "./styles/style.css"
+import "./styles/style.css";
 
 function App(): JSX.Element {
   return (
