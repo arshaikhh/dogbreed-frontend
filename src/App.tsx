@@ -6,10 +6,10 @@ import Header from "./components/Header";
 function App(): JSX.Element {
   return (
     <Router>
-      <Header/>
+      <Header />
       <Routes>
-        <Route path="/" element={<VotePage/>} />
-        <Route path="/leaderboard" element={<LeaderboardPage/>} />
+        <Route path="/" element={<VotePage />} />
+        <Route path="/leaderboard" element={<LeaderboardPage />} />
       </Routes>
     </Router>
   );
