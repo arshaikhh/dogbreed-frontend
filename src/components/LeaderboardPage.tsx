@@ -22,7 +22,6 @@ export default function LeaderboardPage(): JSX.Element {
   }, []);
 
   function getOneTopDogInfo(dogProfile: dogInfo, id: number) {
-   
     return (
       <li className="OneListItem" key={id}>
         {dogProfile.sub_breed}{" "}
@@ -37,7 +36,11 @@ export default function LeaderboardPage(): JSX.Element {
       <h1>Leaderboard Page</h1>
 
       <ol className="ListOfTen">{leaderboard.map(getOneTopDogInfo)}</ol>
-      <button onClick={()=>window.location.href=frontendURL+"leaderboard"}>Refresh</button>
+      <button
+        onClick={() => (window.location.href = frontendURL + "leaderboard")}
+      >
+        Refresh
+      </button>
     </>
   );
 }
