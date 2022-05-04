@@ -3,7 +3,6 @@ export interface DogImage {
   status: string;
 }
 export interface dogInfo {
-  breed: string;
-  // subBreed: string;
+  sub_breed: string;
   sumvote_count: string;
 }
