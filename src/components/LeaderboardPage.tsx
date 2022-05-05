@@ -21,6 +21,8 @@ export default function LeaderboardPage(): JSX.Element {
       .catch((err) => console.error("error when getting entries", err));
   }, []);
 
+  const filteredleaderboard = leaderboard.filter((oneDogInfo) => parseInt(oneDogInfo.sumvote_count) > 0)
+
   function getOneTopDogInfo(dogProfile: dogInfo, id: number) {
     return (
       <li className="OneListItem" key={id}>
@@ -35,7 +37,7 @@ export default function LeaderboardPage(): JSX.Element {
     <>
       <h1>Leaderboard Page</h1>
 
-      <ol className="ListOfTen">{leaderboard.map(getOneTopDogInfo)}</ol>
+      <ol className="ListOfTen">{filteredleaderboard.map(getOneTopDogInfo)}</ol>
       <button
         onClick={() => (window.location.href = frontendURL + "leaderboard")}
       >
