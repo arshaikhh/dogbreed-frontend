@@ -7,11 +7,16 @@ export default function LeaderboardPage(): JSX.Element {
     ? (frontendURL = "https://dogbreed-academy.netlify.app/")
     : (frontendURL = "http://localhost:3000/");
 
+  const baseUrl =
+    process.env.NODE_ENV === "production"
+      ? "https://pastebin-abdulsaj.herokuapp.com/"
+      : "http://localhost:4000/";
+
   const [leaderboard, setLeaderboard] = useState<dogInfo[]>([]);
   console.log(leaderboard);
   useEffect(() => {
     axios
-      .get("https://dog-breed-voting.herokuapp.com/")
+      .get(baseUrl)
       .then((response) => {
         console.log("getting all entries: ", response.data);
         const receivedtopTenDogInfo = response.data;
@@ -19,7 +24,7 @@ export default function LeaderboardPage(): JSX.Element {
         setLeaderboard(receivedtopTenDogInfo);
       })
       .catch((err) => console.error("error when getting entries", err));
-  }, []);
+  }, [baseUrl]);
 
   function getOneTopDogInfo(dogProfile: dogInfo, id: number) {
     return parseInt(dogProfile.sumvote_count) > 0 ? (

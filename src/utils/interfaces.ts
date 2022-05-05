@@ -1,9 +1,13 @@
 export interface DogImage {
   message?: string;
   status?: string;
-  sub_breed?: string;
 }
 export interface dogInfo {
   sub_breed: string;
   sumvote_count: string;
+}
+
+export interface Dog {
+  sub_breed: string;
+  id: number;
 }
