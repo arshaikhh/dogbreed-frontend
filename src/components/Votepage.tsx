@@ -18,7 +18,7 @@ export default function VotePage(): JSX.Element {
       //our fetch is working and we are getting a response
 
       await axios
-        .post("https://dog-breed-voting.herokuapp.com/", {
+        .post("https://localhost:4000/", {
           message: newImages[0],
         })
         .then(function (response) {
@@ -36,7 +36,7 @@ export default function VotePage(): JSX.Element {
         });
 
       await axios
-        .post("https://dog-breed-voting.herokuapp.com/", {
+        .post("https://localhost:4000/", {
           message: newImages[1],
         })
         .then(function (response) {
