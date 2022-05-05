@@ -6,7 +6,7 @@ import { Dog } from "../utils/interfaces";
 export default function VotePage(): JSX.Element {
   const baseUrl =
     process.env.NODE_ENV === "production"
-      ? "https://pastebin-abdulsaj.herokuapp.com/"
+      ? "https://dog-breed-voting.herokuapp.com/"
       : "http://localhost:4000/";
 
   let frontendURL: string;
