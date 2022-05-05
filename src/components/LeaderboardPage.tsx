@@ -23,12 +23,14 @@ export default function LeaderboardPage(): JSX.Element {
 
   function getOneTopDogInfo(dogProfile: dogInfo, id: number) {
     return (
+      parseInt(dogProfile.sumvote_count)>0?
       <li className="OneListItem" key={id}>
         {dogProfile.sub_breed}{" "}
         {parseInt(dogProfile.sumvote_count) === 1
           ? `${parseInt(dogProfile.sumvote_count)} vote`
           : `${parseInt(dogProfile.sumvote_count)} votes`}
-      </li>
+          
+      </li>:null
     );
   }
   return (
