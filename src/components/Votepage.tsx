@@ -1,9 +1,22 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { DogImage } from "../utils/interfaces";
+import { Dog } from "../utils/interfaces";
 
 export default function VotePage(): JSX.Element {
+  const baseUrl =
+    process.env.NODE_ENV === "production"
+      ? "https://dog-breed-voting.herokuapp.com/"
+      : "http://localhost:4000/";
+
+  let frontendURL: string;
+  process.env.NODE_ENV === "production"
+    ? (frontendURL = "https://dogbreed-academy.netlify.app/")
+    : (frontendURL = "http://localhost:3000/");
+
   const [images, setImages] = useState<DogImage[]>([]);
+  const [firstDog, setFirstDog] = useState<Dog>();
+  const [secondDog, setSecondDog] = useState<Dog>();
 
   useEffect(() => {
     const getTwoImages = async () => {
@@ -18,11 +31,12 @@ export default function VotePage(): JSX.Element {
       //our fetch is working and we are getting a response
 
       await axios
-        .post("https://localhost:4000/", {
+        .post(baseUrl, {
           message: newImages[0],
         })
         .then(function (response) {
-          console.log(response);
+          console.log(response.data);
+          setFirstDog(response.data);
         })
         .catch(function (error) {
           console.log(error);
@@ -36,11 +50,12 @@ export default function VotePage(): JSX.Element {
         });
 
       await axios
-        .post("https://localhost:4000/", {
+        .post(baseUrl, {
           message: newImages[1],
         })
         .then(function (response) {
-          console.log(response);
+          console.log(response.data);
+          setSecondDog(response.data);
         })
         .catch(function (error) {
           console.log(error);
@@ -49,8 +64,12 @@ export default function VotePage(): JSX.Element {
     };
 
     getTwoImages();
-  }, []);
+  }, [baseUrl]);
 
+  async function updateVote(id: number) {
+    await axios.put(baseUrl + id);
+    window.location.href = frontendURL;
+  }
   return (
     <>
       <div>
@@ -59,15 +78,23 @@ export default function VotePage(): JSX.Element {
 
       <div className="flex-row-container">
         <div>
-          <img src={images[0] ? images[0].message : ""} alt="placeholder"></img>
-          <p>{images[0] ? images[0].sub_breed : ""}</p>
+          <img
+            src={images[0] ? images[0].message : ""}
+            alt="placeholder"
+            onClick={() => (firstDog ? updateVote(firstDog.id) : 0)}
+          ></img>
+          <p>{firstDog ? firstDog.sub_breed : ""}</p>
         </div>
 
         <p id="or-text">OR</p>
 
         <div>
-          <img src={images[1] ? images[1].message : ""} alt="placeholdr"></img>
-          <p>{images[1] ? images[1].sub_breed : ""}</p>
+          <img
+            src={images[1] ? images[1].message : ""}
+            alt="placeholder"
+            onClick={() => (secondDog ? updateVote(secondDog.id) : 0)}
+          ></img>
+          <p>{secondDog ? secondDog.sub_breed : ""}</p>
         </div>
       </div>
     </>
