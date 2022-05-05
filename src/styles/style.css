@@ -3,6 +3,19 @@ body {
   padding: 0;
 }
 
+.navigation {
+  border: 10px solid grey;
+  background-color: grey;
+  text-align: right;
+}
+
+.navigationButton {
+  border: 7px solid rgb(26, 130, 194);
+  background-color: rgb(26, 130, 194);
+  border-radius: 15%;
+  color: whitesmoke;
+}
+
 .flex-row-container {
   display: flex;
   flex-direction: row;
