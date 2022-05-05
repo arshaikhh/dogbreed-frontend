@@ -79,6 +79,7 @@ export default function VotePage(): JSX.Element {
       <div className="flex-row-container">
         <div>
           <img
+            style = {{width: "200px"}}
             src={images[0] ? images[0].message : ""}
             alt="placeholder"
             onClick={() => (firstDog ? updateVote(firstDog.id) : 0)}
@@ -90,6 +91,7 @@ export default function VotePage(): JSX.Element {
 
         <div>
           <img
+            style = {{width: "200px"}}
             src={images[1] ? images[1].message : ""}
             alt="placeholder"
             onClick={() => (secondDog ? updateVote(secondDog.id) : 0)}
