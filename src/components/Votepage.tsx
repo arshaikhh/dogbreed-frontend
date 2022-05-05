@@ -12,30 +12,32 @@ export default function VotePage(): JSX.Element {
         .then((response) => response.json())
         .then((data) => {
           data as DogImage;
-          console.log(data)
-          newImages[0] = {message: data.message};
+          console.log(data);
+          newImages[0] = { message: data.message };
         });
-        //our fetch is working and we are getting a response
-      
-      await axios.post('https://dog-breed-voting.herokuapp.com/',{
-        message: newImages[0]
-      })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+      //our fetch is working and we are getting a response
+
+      await axios
+        .post("https://dog-breed-voting.herokuapp.com/", {
+          message: newImages[0],
+        })
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
 
       await fetch("https://dog.ceo/api/breeds/image/random")
         .then((response) => response.json())
         .then((data) => {
           data as DogImage;
-          newImages[1] = {message: data.message};
+          newImages[1] = { message: data.message };
         });
 
-        await axios.post('https://dog-breed-voting.herokuapp.com/',{
-          message: newImages[1]
+      await axios
+        .post("https://dog-breed-voting.herokuapp.com/", {
+          message: newImages[1],
         })
         .then(function (response) {
           console.log(response);
