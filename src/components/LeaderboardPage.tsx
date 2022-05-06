@@ -28,11 +28,16 @@ export default function LeaderboardPage(): JSX.Element {
 
   function getOneTopDogInfo(dogProfile: dogInfo, id: number) {
     return parseInt(dogProfile.sumvote_count) > 0 ? (
-      <li className="OneListItem" key={id}>
-        {dogProfile.sub_breed}{" "}
-        {parseInt(dogProfile.sumvote_count) === 1
-          ? `${parseInt(dogProfile.sumvote_count)} vote`
-          : `${parseInt(dogProfile.sumvote_count)} votes`}
+      <li className="leaderboard-dog-item" key={id}>
+        <div style={{ textAlign: "left" }}> {id + 1}</div>
+        <div style={{ textAlign: "center" }} className="sub-breed">
+          {dogProfile.sub_breed}{" "}
+        </div>
+        <div style={{ textAlign: "right" }}>
+          {parseInt(dogProfile.sumvote_count) === 1
+            ? `${parseInt(dogProfile.sumvote_count)} vote`
+            : `${parseInt(dogProfile.sumvote_count)} votes`}
+        </div>
       </li>
     ) : null;
   }
@@ -40,12 +45,17 @@ export default function LeaderboardPage(): JSX.Element {
     <>
       <h1>Leaderboard Page</h1>
 
-      <ol className="ListOfTen">{leaderboard.map(getOneTopDogInfo)}</ol>
-      <button
-        onClick={() => (window.location.href = frontendURL + "leaderboard")}
-      >
-        Refresh
-      </button>
+      <div className="leaderboard-page">
+        <ol className="leaderboard-list">
+          {leaderboard.map(getOneTopDogInfo)}
+        </ol>
+        <button
+          id="refresh-button"
+          onClick={() => (window.location.href = frontendURL + "leaderboard")}
+        >
+          Refresh
+        </button>
+      </div>
     </>
   );
 }

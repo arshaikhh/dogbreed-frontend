@@ -79,24 +79,24 @@ export default function VotePage(): JSX.Element {
       <div className="flex-row-container">
         <div>
           <img
-            style={{ width: "200px" }}
+            style={{ width: "400px" }}
             src={images[0] ? images[0].message : ""}
             alt="placeholder"
             onClick={() => (firstDog ? updateVote(firstDog.id) : 0)}
           ></img>
-          <p>{firstDog ? firstDog.sub_breed : ""}</p>
+          <p className="dog-breed">{firstDog ? firstDog.sub_breed : ""}</p>
         </div>
 
         <p id="or-text">OR</p>
 
         <div>
           <img
-            style={{ width: "200px" }}
+            style={{ width: "400px" }}
             src={images[1] ? images[1].message : ""}
             alt="placeholder"
             onClick={() => (secondDog ? updateVote(secondDog.id) : 0)}
           ></img>
-          <p>{secondDog ? secondDog.sub_breed : ""}</p>
+          <p className="dog-breed">{secondDog ? secondDog.sub_breed : ""}</p>
         </div>
       </div>
     </>
