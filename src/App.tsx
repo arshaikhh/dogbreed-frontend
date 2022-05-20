@@ -1,7 +1,19 @@
-import { greet } from "./utils/greet";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import VotePage from "./components/Votepage";
+import LeaderboardPage from "./components/LeaderboardPage";
+import Header from "./components/Header";
+import "./styles/style.css";
 
 function App(): JSX.Element {
-  return <h1>{greet("World")}</h1>;
+  return (
+    <Router>
+      <Header />
+      <Routes>
+        <Route path="/" element={<VotePage />} />
+        <Route path="/leaderboard" element={<LeaderboardPage />} />
+      </Routes>
+    </Router>
+  );
 }
 
 export default App;
